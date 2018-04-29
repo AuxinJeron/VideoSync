@@ -5,6 +5,11 @@ function updateConnectContent(message) {
         function(response) {})
 }
 
+function updateReceiverContent(message) {
+	chrome.runtime.sendMessage({action: 'updateReceiverContent', message: message}, 
+		function(response) {})
+} 
+
 function registerPeerListener(peer) {
     peer.on('error', function(err) {
         console.log('error', err)
@@ -20,8 +25,8 @@ function registerPeerListener(peer) {
     })
 
     peer.on('data', function(data) {
-        console.log('data: ' + data)
-        //document.querySelector('#receiver_content').textContent = data
+        console.log('data: ' + data + ' with type: ' + typeof(data))
+        updateReceiverContent(data.toString())
     })
 }
 

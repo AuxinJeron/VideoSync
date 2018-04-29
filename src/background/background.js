@@ -6,8 +6,11 @@ chrome.runtime.onInstalled.addListener(function() {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log(sender.tab ? 'from a content script: ' + sender.tab.url : 'from the extension')
-    if (request.action == "updateConnectContent") {
-        console.log("update connect content: " + request.message)
+    if (request.action == 'updateConnectContent') {
+        console.log('update connect content: ' + request.message)
+        bgPort.postMessage(request)
+    } else if (request.action == 'updateReceiverContent') {
+        console.log('update receiver content: ' + request.message)
         bgPort.postMessage(request)
     }
 })

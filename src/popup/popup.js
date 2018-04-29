@@ -34,15 +34,17 @@ function updateConnectContent(message) {
     document.querySelector('#connect_content').value = message
 }
 
-function updateReceiverContent() {
-    document.querySelector('#receiver_content').textContent = message
+function updateReceiverContent(message) {
+    document.querySelector('#receiver_content').value = message
 }
 
 var port = chrome.extension.connect({ name: 'video sync' })
 port.onMessage.addListener(function(msg) {
     console.log('message received: ' + msg.action)
-    if (msg.action == "updateConnectContent") {
+    if (msg.action == 'updateConnectContent') {
         updateConnectContent(msg.message)
+    } else if (msg.action == 'updateReceiverContent') {
+    	updateReceiverContent(msg.message)
     }
 })
 
