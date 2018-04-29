@@ -1,0 +1,7 @@
+video = player.getElementsByClassName("youku-film-player")[0].getElementsByTagName("video")[0]
+
+video.currentTime = 30 (30 seconds
+
+https://www.zhihu.com/question/23228162/answer/36767934
+
+https://github.com/muaz-khan/Chrome-Extensions

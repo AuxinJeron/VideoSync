@@ -1,0 +1,29 @@
+{
+  "name": "Video Sync",
+  "description": "App to sync video playback in different browsers",
+  "version": "0.1",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["./src/background/background.js", "./node_modules/simple-peer/simplepeer.min.js"],
+    "persisten": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.youku.com/*"],
+      "js": ["./src/content/content.js", "./node_modules/simple-peer/simplepeer.min.js"]
+    }
+  ],
+  "icons": { 
+    "16": "/assets/play-button-16.png", 
+    "48": "/assets/play-button-48.png",
+    "128": "/assets/play-button-128.png" 
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "/assets/play-button-19.png",
+      "38": "/assets/play-button-38.png"
+    },
+    "default_title": "Video sync",
+    "default_popup": "./src/popup/popup.html"
+  }
+}
