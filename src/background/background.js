@@ -53,3 +53,14 @@ function send(message, callback) {
         })
     })
 }
+
+function isReady(callback) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { action: 'isReady' }, function(response) {
+            console.log('isReady: ' + response)
+            callback(response)
+        })
+    })
+}
+
+

@@ -27,6 +27,16 @@ function registerListener() {
         message = document.querySelector('#sender_content').value
         bgPage.send(message, null)
     })
+
+    bgPage.isReady(refreshReady)
+}
+
+function refreshReady(isReady) {
+    if (isReady) {
+    	updateConnectContent('ready')
+    } else {
+    	updateConnectContent('pending')
+    }
 }
 
 function updateConnectContent(message) {
